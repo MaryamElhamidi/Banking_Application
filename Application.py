@@ -1,5 +1,6 @@
 #Application
 from Bank import Bank
+from Account import *
 
 def run():
     return
@@ -22,7 +23,6 @@ def showMainMenu():
                 print("Account not found. Please try again.")
 
         elif choice == '2':
-            #Implement the logic for opening a new account (Bonus)
             return Bank.openAccount()
         
         elif choice == '3':
@@ -45,14 +45,14 @@ def showAccountMenu(account_number):
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            balance = account.check_balance()
+            balance = Account.getCurrentBalance()
             print(f"Balance: {balance}")
 
         elif choice == '2':
             try:
                 amount = float(input("Enter the amount to deposit: "))
                 if amount > 0:
-                    account.deposit(amount)
+                    Account.deposit(amount)
                 else:
                     print("Invalid amount. Please enter a positive value.")
             except ValueError:
@@ -62,7 +62,7 @@ def showAccountMenu(account_number):
             try:
                 amount = float(input("Enter the amount to withdraw: "))
                 if amount > 0:
-                    account.withdraw(amount)
+                    Account.withdraw(amount)
                 else:
                     print("Invalid amount. Please enter a positive value.")
             except ValueError:

@@ -15,7 +15,7 @@ class Bank:
                          SavingsAccount("666", "Eva Green", 0.02, 9000.0, 4500.0)]
     
     def searchAccount():
-        for account in accounts:  
+        for account in self.accounts:  
             if accountNumber == getAcountNumber:
                 return account
         return None  # Account not found
