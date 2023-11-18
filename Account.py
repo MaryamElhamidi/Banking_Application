@@ -37,7 +37,7 @@ class SavingsAccount(Account): #requires the account holder(s) to maintain a min
             print(f"Withdrawal successful. Balance: {self.__currentBalance__}")
             print(f"Your Maximum withdrawl amount is now {max_withdrawl}")
         else:
-            print(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawl} CAD.")
+            raise ValueError(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawl} CAD.")
     
 
 
