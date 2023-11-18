@@ -24,3 +24,23 @@ class Account:
         return
     def withdraw():
         return
+    
+#SavingsAccount
+
+class SavingsAccount(Account):
+    def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance):
+        super().__init__(accountNumber, accountHolderName, rateOfInterest, currentBalance)
+        self.___minimumBalance__ = minimumBalance
+
+    def withdraw():
+        return
+    
+#ChequingAccount
+
+class ChequingAccount(Account):
+    def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance, overdraftLimit):
+        super().__init__(accountNumber, accountHolderName, rateOfInterest, currentBalance)
+        self.__overdraftLimit__ = overdraftLimit
+
+    def withdraw():
+        return

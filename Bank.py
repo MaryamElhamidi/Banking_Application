@@ -5,7 +5,7 @@ class Bank:
         self.__bankName__ = bankName
 
     def openAccount():
-        return
+        return 
     
     def searchAccount():
         return
