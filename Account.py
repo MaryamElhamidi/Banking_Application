@@ -1,5 +1,4 @@
 #Account
-
 class Account():
     def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance):
         self.__accountNumber__ = accountNumber

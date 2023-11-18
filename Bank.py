@@ -20,11 +20,11 @@ class Bank:
                 return account
         return None  # Account not found
 
-    def openAccount(self, accountType, accountNumber, currentBalance, minimumBalance = None, overdraftLimit = None):
+    def openAccount(self, accountType, accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance = None, overdraftLimit = None):
         if accountType == "Savings":
-            new_account = SavingsAccount(accountNumber, currentBalance, minimumBalance)
+            new_account = SavingsAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance)
         elif accountType == "Chequing":
-            new_account = ChequingAccount(accountNumber, currentBalance, overdraftLimit)
+            new_account = ChequingAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, overdraftLimit)
         else:
             print("Invalid account type. Only 'Savings' and 'Chequing' accounts are supported.")
             return

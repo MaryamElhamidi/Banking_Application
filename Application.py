@@ -1,5 +1,5 @@
 #Application
-from Bank import openAccount
+from Bank import Bank
 
 def run():
     return
@@ -23,8 +23,7 @@ def showMainMenu():
 
         elif choice == '2':
             #Implement the logic for opening a new account (Bonus)
-            #return openAccount()
-            return
+            return Bank.openAccount()
         
         elif choice == '3':
             print("Exiting the application. Goodbye!")
