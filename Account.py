@@ -1,6 +1,6 @@
 #Account
 
-class Account:
+class Account():
     def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance):
         self.__accountNumber__ = accountNumber
         self.__accountHolderName__ = accountHolderName
@@ -8,7 +8,7 @@ class Account:
         self.__currentBalance__ = currentBalance
 
     
-    def getAcountNumber():
+    def getAccountNumber():
         return
     def getAccountHolderName ():
         return
@@ -27,8 +27,8 @@ class Account:
     
 #SavingsAccount
 class SavingsAccount(Account): #requires the account holder(s) to maintain a minimum balance in the account
-    def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance):
-        super().__init__(accountNumber, accountHolderName, rateOfInterest, currentBalance)
+    def __init__(self,currentBalance, minimumBalance):
+        super().__init__(currentBalance)
         self.___minimumBalance__ = minimumBalance
 
     def withdraw(self, amount):
@@ -43,8 +43,8 @@ class SavingsAccount(Account): #requires the account holder(s) to maintain a min
 
 #ChequingAccount
 class ChequingAccount(Account):
-    def __init__(self, accountNumber, accountHolderName, rateOfInterest, currentBalance, overdraftLimit):
-        super().__init__(accountNumber, accountHolderName, rateOfInterest, currentBalance)
+    def __init__(self, currentBalance, overdraftLimit):
+        super().__init__(currentBalance)
         self.__overdraftLimit__ = overdraftLimit
 
     def withdraw(self, amount):
@@ -52,6 +52,8 @@ class ChequingAccount(Account):
         
         if amount <= max_withdrawal:
             print(f"Withdrawal successful. Your allowed overdraft withdrawl is: {max_withdrawal} CAD.")
+            return True
 
         else:
             raise ValueError(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawal} CAD.")
+            return False
