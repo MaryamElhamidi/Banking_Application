@@ -7,7 +7,9 @@ from Account import Account
 class Bank:
     def __init__(self, bankName):
         self.__bankName__ = bankName
-        self.accounts = []
+        self.accounts = [ChequingAccount("111", 5000.0, 1000.0),
+            ChequingAccount("222", 3000.0, 2000.0),
+            ChequingAccount("333", 7000.0, 1500.0),]
     
     def searchAccount():
         for account in accounts:  
