@@ -6,26 +6,35 @@ class Application():
     def run(self):
         return
 
-    def showMainMenu(self):
+    def showMainMenu(self, Bank):
         while True:
             print("Main Menu:")
             print("1. Select Account")
             print("2. Open Account (Bonus - To be implemented)")
             print("3. Exit")
 
-            choice = input("Enter your choice: (Enter 1, 2, or 3)")
+            choice = input("Enter your choice: (Enter 1, 2, or 3): ")
 
             if choice == '1':
-                account_number = input("Enter the account number: ")
+                try:
+                    account_number = input("Enter the account number: ")
 
-                if account_number:
-                    self.showAccountMenu(account_number)
-                else:
+                    if account_number:
+                        self.showAccountMenu(account_number)
+                except ValueError:
                     print("Account not found. Please try again.")
+                    account_number = input("Enter the account number: ")
+
 
             elif choice == '2':
-                return Bank.openAccount()
-            
+                print("Welcome to Opening an Account")
+                accountType = input("Would you like to open a Savings Account or Chequings Account: ")
+                try:
+                    Bank.openAccount(accountType)
+
+                except ValueError:
+                    print("Sorry, the option you have entered is incorrect or does not exist")
+                
             elif choice == '3':
                 print("Exiting the application. Goodbye!")
                 break
@@ -69,6 +78,7 @@ class Application():
                         Account.withdraw(amount)
                     else:
                         print("Invalid amount. Please enter a positive value.")
+
                 except ValueError:
                     print("Invalid input. Please enter a valid number.")
 
@@ -78,3 +88,9 @@ class Application():
 
             else:
                 print("Invalid choice. Please enter a valid option.")
+
+
+b = Bank("Maryam's Bank")
+
+a = Application()
+a.showMainMenu(b)

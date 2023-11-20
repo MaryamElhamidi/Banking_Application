@@ -1,6 +1,6 @@
 #Bank
 from Account import *
-
+import random
 
 class Bank():
     def __init__(self, bankName):
@@ -21,9 +21,12 @@ class Bank():
         return None  # Account not found
 
     
-    def openAccount(self, accountType, accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance = None, overdraftLimit = None):
+    def openAccount(self, accountType, accountNumber = None, accountHolderName = None, rateOfInterest = None, currentBalance = None, minimumBalance = None, overdraftLimit = None):
+        accountNumber = random.randint(111111, 999999)
+        
         if accountType == "Savings":
             new_account = SavingsAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance)
+        
         elif accountType == "Chequing":
             new_account = ChequingAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, overdraftLimit)
         else:
@@ -34,5 +37,5 @@ class Bank():
         print(f"Account opened successfully. Account number: {accountNumber}")
 
 
-b = Bank("lol")
-b.searchAccount("111")
+
+#b.searchAccount("111")
