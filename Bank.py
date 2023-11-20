@@ -2,7 +2,7 @@
 from Account import *
 
 
-class Bank:
+class Bank():
     def __init__(self, bankName):
         self.__bankName__ = bankName
         self.accounts = [ChequingAccount("111", "John Doe", 0.02, 5000.0, 1000.0),
