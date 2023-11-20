@@ -1,7 +1,5 @@
 #Bank
-from Account import SavingsAccount
-from Account import ChequingAccount
-from Account import Account
+from Account import *
 
 
 class Bank:
@@ -14,12 +12,15 @@ class Bank:
                          SavingsAccount("555", "Charlie Brown", 0.04, 6000.0, 3000.0),
                          SavingsAccount("666", "Eva Green", 0.02, 9000.0, 4500.0)]
     
-    def searchAccount():
+    def searchAccount(self, accountNumber):
         for account in self.accounts:  
-            if accountNumber == getAcountNumber:
+            if accountNumber == account.__accountNumber__:
+                print("Found")
+                print(accountNumber)
                 return account
         return None  # Account not found
 
+    
     def openAccount(self, accountType, accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance = None, overdraftLimit = None):
         if accountType == "Savings":
             new_account = SavingsAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance)
@@ -31,3 +32,7 @@ class Bank:
 
         self.accounts.append(new_account)
         print(f"Account opened successfully. Account number: {accountNumber}")
+
+
+b = Bank("lol")
+b.searchAccount("111")

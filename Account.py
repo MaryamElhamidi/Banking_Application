@@ -16,9 +16,9 @@ class Account():
     def getCurrentBalance(self):
         return self.__currentBalance__
     def setAccountHolderName(self, accountName):
-        return self.__accountHolderName__ == accountName
+        self.__accountHolderName__ = accountName
     def setRateOfinterest(self, ROI):
-        return self.__rateOfInterest__ == ROI
+        self.__rateOfInterest__ = ROI
     
     def deposit(self, amount):
         if amount > 0:
