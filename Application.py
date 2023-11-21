@@ -3,8 +3,6 @@ from Bank import Bank
 from Account import *
 
 class Application():
-    def run(self):
-        return
 
     def showMainMenu(self, Bank):
         while True:
@@ -64,8 +62,9 @@ class Application():
                     self.__currentBalance__ += amount
                     if amount > 0:
                         Account.deposit(amount)
+                        print('Successful Deposit has been made.')
                     else:
-                        print("Invalid amount. Please enter a positive value.")
+                        print("Failed Deposit. Invalid amount. Please enter a positive value.")
                         amount = float(input("Enter the amount to deposit: "))
 
                 except ValueError:
@@ -90,7 +89,8 @@ class Application():
                 print("Invalid choice. Please enter a valid option.")
 
 
-b = Bank("Maryam's Bank")
 
+
+b = Bank("Maryam's Bank")
 a = Application()
 a.showMainMenu(b)

@@ -13,12 +13,13 @@ class Bank():
                 print("Found")
                 print(accountNumber)
                 return account
-        return None  # Account not found
+        return None
+    
     def addAccount(self, account):
         return self.accounts.append(account)
 
     def createAccountNumber(self):
-        return ''.join(str(random.randint(0, 9)) for _ in range(random.randint(8, 12)))
+        return ''.join(str(random.randint(0, 10)) for _ in range(random.randint(11, 20)))
 
     def createAccount(self):
         self.addAccount(ChequingAccount(self.createAccountNumber(), 500, 1000))
@@ -31,11 +32,12 @@ class Bank():
     def openAccount(self, accountType, accountNumber = None, accountHolderName = None, rateOfInterest = None, currentBalance = None, minimumBalance = None, overdraftLimit = None):
         accountNumber = random.randint(111111, 999999)
         
-        if accountType == "Savings":
+        if accountType.lower() == "Savings":
             new_account = SavingsAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, minimumBalance)
         
-        elif accountType == "Chequing":
+        elif accountType.lower() == "Chequing":
             new_account = ChequingAccount(accountNumber, accountHolderName, rateOfInterest, currentBalance, overdraftLimit)
+        
         else:
             print("Invalid account type. Only 'Savings' and 'Chequing' accounts are supported.")
             return
