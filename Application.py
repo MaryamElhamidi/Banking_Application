@@ -25,7 +25,7 @@ class Application():
 
                     if account_number: #Validates account number
                         self.showAccountMenu(account_number) #Runs and iteraties the showAccountMenu method using the user's input.
-                except ValueError: #Raises value error.
+                except ValueError: #Raises value error
                     print("Account not found. Please try again.")
                     account_number = input("Enter the account number: ") #Prompts the user to enter another valid account number.
 
@@ -34,6 +34,17 @@ class Application():
                 print("Welcome to Opening an Account")
                 accountType = input("Would you like to open a Savings Account or Chequings Account: ") #Prompts the user to make a savings or chequings account.
                 accountType.lower() #Takes the user input, and uses the lower() method to ensure the user's input is passed.
+                if accountType == "savings":
+                    account_minimum_balance = int(input("Enter minimum balance:"))
+                    account_overdraft_limit = 0
+
+                elif accountType == "chequing":
+                    account_overdraft_limit = int(input("Enter the overdraft limit: "))
+                    account_minimum_balance = 0
+
+                account_holder_name = input("Enter the account holder name:")
+                account_current_balance = int(input("Enter the current balanceble to open an account."))
+                
                 try: #Error Handling for choice 2
                     Bank.openAccount(accountType) #Opens an account. Uses the users input, and passes it through as a parameter for the method function "Open Account" of class Bank.
 

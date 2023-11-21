@@ -8,7 +8,7 @@ class Bank(): #Keeps track of all the accounts.
         
         #A defined list/constructor of instances of SavingsAccount and ChequingAccount.
         self.accounts = [
-            ChequingAccount("111", "John Doe", 0.02, 5000.0, 1000.0),
+            ChequingAccount(111, "John Doe", 0.02, 5000.0, 1000.0),
             ChequingAccount("222", "Jane Doe", 0.03, 3000.0, 2000.0),
             ChequingAccount("333", "Bob Smith", 0.01, 7000.0, 1500.0),
             SavingsAccount("444", "Alice Johnson", 0.05, 8000.0, 5000.0),
