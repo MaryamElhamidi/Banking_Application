@@ -22,9 +22,7 @@ class Application():
             if choice == '1': #For
                 try: #Error Handling for choice 1
                     account_number = input("Enter the account number: ") #Prompts the user to enter an account number.
-
-                    if account_number: #Validates account number
-                        self.showAccountMenu(account_number) #Runs and iteraties the showAccountMenu method using the user's input.
+                    self.showAccountMenu(account_number)#Validates account number  #Runs and iteraties the showAccountMenu method using the user's input.
                 except ValueError: #Raises value error
                     print("Account not found. Please try again.")
                     account_number = input("Enter the account number: ") #Prompts the user to enter another valid account number.
@@ -68,7 +66,7 @@ class Application():
             print("2. Deposit")
             print("3. Withdraw")
             print("4. Exit Account")
-
+        
             choice = input("Enter your choice: ") #Prompts user to make a choice.
 
             if choice == '1':
