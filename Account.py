@@ -24,15 +24,19 @@ class Account():
         if amount > 0:
             self.__currentBalance__ += amount
             print(f"Deposit successful. New balance: {self.__currentBalance__}")
+            return True
         else:
             print("Invalid deposit amount. Please enter a positive value.")
+            return False
 
     def withdraw(self, amount):
         if amount > 0 and amount <= self.__currentBalance__:
             self.__currentBalance__ -= amount
             print(f"Withdrawal successful. New balance: {self.__currentBalance__}")
+            return True
         else:
             print("Invalid withdrawal amount or insufficient funds. Withdrawal failed.")
+            return False
 
     
 #SavingsAccount
@@ -49,7 +53,6 @@ class SavingsAccount(Account): #requires the account holder(s) to maintain a min
             return True
         else:
             raise ValueError(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawl} CAD.")
-            return False
 
 
 #ChequingAccount
@@ -61,13 +64,14 @@ class ChequingAccount(Account):
     def withdraw(self, amount):
         max_withdrawal = self.__currentBalance__ + self.__overdraftLimit__
         
-        if amount <= max_withdrawal:
+
+        if amount > 0 and amount <= max_withdrawal:
+            self.__currentBalance__ -= amount
             print(f"Withdrawal successful. Your allowed overdraft withdrawl is: {max_withdrawal} CAD.")
             return True
 
         else:
             raise ValueError(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawal} CAD.")
-            return False
 
 
 
