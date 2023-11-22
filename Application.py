@@ -3,7 +3,7 @@ from Bank import Bank #Imports class Bank.
 from Account import * #Imports all classes, and methods from the file Account using *.
 
 class Application():
-    my_bank = Bank("Maryam's Bank")
+    my_bank = Bank("Maryam's Bank") # Class object of class bank.
 
     '''
     This function allows the user to enter the account number of the account they want to work with.
@@ -22,7 +22,7 @@ class Application():
             if choice == '1': #For
                 try: #Error Handling for choice 1
                     account_number = int(input("Enter the account number: ")) #Prompts the user to enter an account number.
-                    if(self.my_bank.searchAccount(account_number) == None):
+                    if(self.my_bank.searchAccount(account_number) == None): #If the user enters an account number that is not part of the pre-defined list of accounts it prompts them to create an account
                         print("Invalid account number. Please select the open a new account function.")
                     else: self.showAccountMenu(account_number)#Validates account number  #Runs and iteraties the showAccountMenu method using the user's input.
                 except ValueError: #Raises value error
@@ -43,8 +43,8 @@ class Application():
                     account_minimum_balance = 0
 
                 account_holder_name = input("Enter the account holder name:")
-                account_current_balance = int(input("Enter the current balanceble to open an account."))
-                rate_of_interest = int(input("Enter the rate of interest of the account."))
+                account_current_balance = int(input("Enter the current balanceble to open an account: "))
+                rate_of_interest = int(input("Enter the rate of interest of the account: "))
                 
                 try: #Error Handling for choice 2
                     self.my_bank.openAccount(accountType,0,account_holder_name,rate_of_interest,account_current_balance,account_minimum_balance,account_overdraft_limit) #Opens an account. Uses the users input, and passes it through as a parameter for the method function "Open Account" of class Bank.
@@ -74,7 +74,7 @@ class Application():
             
             if choice == '1':
                 try: #Error Handling for choice 1
-                    balance = self.my_bank.searchAccount(account_number).getCurrentBalance() #Creates an object, and accesses the getter from class 'Account'
+                    balance = self.my_bank.searchAccount(account_number).getCurrentBalance() #Creates an object, and accesses the getter from class 'Account' through the search account function.
                     print(f"Balance: {balance}") #Prints the updated balance.
                 except RuntimeError: #Handles error through runtime error, because the balance is seperate from user interaction. 
                     print("Unable to find Balance.") #Displays that the balance is not accessable.

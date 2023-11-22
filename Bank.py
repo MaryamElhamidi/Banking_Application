@@ -26,7 +26,7 @@ class Bank(): #Keeps track of all the accounts.
 
     def openAccount(self, accountType, accountNumber = None, accountHolderName = None, rateOfInterest = None, currentBalance = None, minimumBalance = None, overdraftLimit = None):
         accountNumber = random.randint(111111, 999999) #Creates an object that randomizes an account number.
-        while True:
+        while True: #This loop ensures that the random function doesnt randomize the same account number twice. Or that it becomes non-existent 
             is_used = False
             for account in self.accounts:
                 if(accountNumber == account.__accountNumber__):
