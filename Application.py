@@ -26,7 +26,7 @@ class Application():
                         print("Invalid account number. Please select the open a new account function.")
                     else: self.showAccountMenu(account_number)#Validates account number  #Runs and iteraties the showAccountMenu method using the user's input.
                 except ValueError: #Raises value error
-                    print("Account not found. Please try again.")
+                    print("Invalid Account number type. Please try again.")
                     account_number = input("Enter the account number: ") #Prompts the user to enter another valid account number.
 
 

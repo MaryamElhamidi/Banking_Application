@@ -19,8 +19,7 @@ class Bank(): #Keeps track of all the accounts.
     def searchAccount(self, accountNumber):
         for account in self.accounts:  #Iterates through each account in the list of accounts
             if accountNumber == account.__accountNumber__: #Checks if the provided accountNumber matches the account's accountNumber
-                print("Found") #Prints a message indicating that the account is found
-                print(accountNumber) #Print the account number for debugging or informational purposes.
+                print(f"Your account number is: {accountNumber}") #Print the account number for debugging or informational purposes.
                 return account # Return the account object if a match is found.
         return None #If no matching account is found, returns None.
 
