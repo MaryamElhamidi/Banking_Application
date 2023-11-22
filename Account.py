@@ -5,7 +5,6 @@ class Account():
         self.__accountHolderName__ = accountHolderName
         self.__rateOfInterest__ = rateOfInterest 
         self.__currentBalance__ = currentBalance
-
     
     def getAccountNumber(self): #Gets the Account Number
         return self.__accountNumber__ #Returns the account number
@@ -49,8 +48,9 @@ class SavingsAccount(Account): #requires the account holder(s) to maintain a min
     def withdraw(self, amount):
         max_withdrawl =  self.__currentBalance__ - self.___minimumBalance__ #Calculates and stores the maximum withdrawl amount.
         if amount <= max_withdrawl: 
+            self.__currentBalance__ -= amount
             print(f"Withdrawal successful. Balance: {self.__currentBalance__}") #Prints the current balance.
-            print(f"Your Maximum withdrawl amount is now {max_withdrawl}") #Prints the updated maximum withdrawl amount.
+            print(f"Your Maximum withdrawl amount is now {self.__currentBalance__ - self.___minimumBalance__}") #Prints the updated maximum withdrawl amount.
             return True
         else:
             raise ValueError(f"Withdrawal failed. The maximum allowed withdrawal is {max_withdrawl} CAD.") #Raises Value error and prints what is expected.
@@ -68,7 +68,7 @@ class ChequingAccount(Account): #Created ChequingAccount class that takes the at
 
         if amount > 0 and amount <= max_withdrawal: #If the amount is greater than 0, and is greater than or equal to 0, the loop calculates and updates the current balance.
             self.__currentBalance__ -= amount #Updates the current balance to the new amount.
-            print(f"Withdrawal successful. Your allowed overdraft withdrawl is: {max_withdrawal} CAD.") #Prints the results
+            print(f"Withdrawal successful. Your allowed overdraft withdrawl is: {self.__currentBalance__ + self.__overdraftLimit__} CAD.") #Prints the results
             return True #Returns True, for future refrences.
 
         else:

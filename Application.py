@@ -3,14 +3,14 @@ from Bank import Bank #Imports class Bank.
 from Account import * #Imports all classes, and methods from the file Account using *.
 
 class Application():
-
+    my_bank = Bank("Maryam's Bank")
 
     '''
     This function allows the user to enter the account number of the account they want to work with.
     Upon searching the account successfully, the application will call the method showAccountMenu to display the Account Menu as 
     described next. This method has a HAS-A relation with class Bank, which is why it is passed as a parameter.
     ''' 
-    def showMainMenu(self, Bank):
+    def showMainMenu(self):
         while True:
             print("Main Menu:") #Prints options 1, 2, and 3 of a Main Menu.
             print("1. Select Account")
@@ -21,8 +21,10 @@ class Application():
 
             if choice == '1': #For
                 try: #Error Handling for choice 1
-                    account_number = input("Enter the account number: ") #Prompts the user to enter an account number.
-                    self.showAccountMenu(account_number)#Validates account number  #Runs and iteraties the showAccountMenu method using the user's input.
+                    account_number = int(input("Enter the account number: ")) #Prompts the user to enter an account number.
+                    if(self.my_bank.searchAccount(account_number) == None):
+                        print("Invalid account number. Please select the open a new account function.")
+                    else: self.showAccountMenu(account_number)#Validates account number  #Runs and iteraties the showAccountMenu method using the user's input.
                 except ValueError: #Raises value error
                     print("Account not found. Please try again.")
                     account_number = input("Enter the account number: ") #Prompts the user to enter another valid account number.
@@ -42,9 +44,10 @@ class Application():
 
                 account_holder_name = input("Enter the account holder name:")
                 account_current_balance = int(input("Enter the current balanceble to open an account."))
+                rate_of_interest = int(input("Enter the rate of interest of the account."))
                 
                 try: #Error Handling for choice 2
-                    Bank.openAccount(accountType) #Opens an account. Uses the users input, and passes it through as a parameter for the method function "Open Account" of class Bank.
+                    self.my_bank.openAccount(accountType,0,account_holder_name,rate_of_interest,account_current_balance,account_minimum_balance,account_overdraft_limit) #Opens an account. Uses the users input, and passes it through as a parameter for the method function "Open Account" of class Bank.
 
                 except ValueError: #Raises value error is user does not enter the option of savings or chequing account.
                     print('The account you are trying to make is not possible. Only savings and chequings is allowed.')
@@ -68,10 +71,10 @@ class Application():
             print("4. Exit Account")
         
             choice = input("Enter your choice: ") #Prompts user to make a choice.
-
+            
             if choice == '1':
                 try: #Error Handling for choice 1
-                    balance = Account.getCurrentBalance(self) #Creates an object, and accesses the getter from class 'Account'
+                    balance = self.my_bank.searchAccount(account_number).getCurrentBalance() #Creates an object, and accesses the getter from class 'Account'
                     print(f"Balance: {balance}") #Prints the updated balance.
                 except RuntimeError: #Handles error through runtime error, because the balance is seperate from user interaction. 
                     print("Unable to find Balance.") #Displays that the balance is not accessable.
@@ -79,10 +82,10 @@ class Application():
             elif choice == '2': #Prompt the user for an amount to deposit and perform the deposit using the methods in account class.
                 try: #Error Handling for choice 2
                     amount = float(input("Enter the amount to deposit: ")) #Prompts the user to enter desired deposited amount
-                    self.__currentBalance__ += amount #Updates the Current Balance field variable with the users input.
-                    if amount > 0:  #Validates that the user input is a greater than zero
-                        Account.deposit(amount) #Accesses and uses the deposit function in class 'Account' using the user's desired input.
-                        print('Successful Deposit has been made.') 
+                    #self.my_bank.searchAccount(account_number).__currentBalance__ += amount #Updates the Current Balance field variable with the users input.
+                    #if amount > 0:  #Validates that the user input is a greater than zero
+                    self.my_bank.searchAccount(account_number).deposit(amount) #Accesses and uses the deposit function in class 'Account' using the user's desired input.
+                    #print('Successful Deposit has been made.') 
 
                 except ValueError:
                     print("Invalid input. Please enter a valid number, greater than 0.") #Displays to the user the value is incorrect.
@@ -92,7 +95,7 @@ class Application():
                 try: #Error Handling for choice 3
                     amount = float(input("Enter the amount to withdraw: ")) #Prompts the user to enter desired withdrawl amount
                     if amount > 0:  #Validates that the user input is a greater than zero
-                        Account.withdraw(amount) #Accesses the withdraw method in class account using the users input.
+                        self.my_bank.searchAccount(account_number).withdraw(amount) #Accesses the withdraw method in class account using the users input.
                     else:
                         print("Invalid amount. Please enter a positive value.") #If the number is not greater than 0 and not an integer, it prompts the user to enter again, with instructions stating that it must be an integer.
                         amount = float(input("Enter the amount to withdraw: ")) #Prompts the user to enter desired withdrawl amount
@@ -109,6 +112,6 @@ class Application():
 
 
 
-b = Bank("Maryam's Bank") #An object of class Bank.
+#b = Bank("Maryam's Bank") #An object of class Bank.
 a = Application() #An object of class Application.
-a.showMainMenu(b) #Passes through Application class, and iterates/runs the loop using the object of the class Bank.
+a.showMainMenu() #Passes through Application class, and iterates/runs the loop using the object of the class Bank.
