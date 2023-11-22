@@ -109,9 +109,11 @@ class Application():
             else:
                 print("Invalid choice. Please enter a valid option.") #Displays that the user made a wrong choice. Loop will continue iterating and asking the user to re-enter a valid option. 
 
-
-
-
+    def run():
+        a = Application() #An object of class Application.
+        a.showMainMenu() #Passes through Application class, and iterates/runs the loop using the object of the class Bank.
+        return
 #b = Bank("Maryam's Bank") #An object of class Bank.
-a = Application() #An object of class Application.
-a.showMainMenu() #Passes through Application class, and iterates/runs the loop using the object of the class Bank.
+
+
+print(Application.run())
